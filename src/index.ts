@@ -2,6 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import morgan from 'morgan';
 import swaggerUI from 'swagger-ui-express';
+import helmet from 'helmet';
 import productRoute from './app/Product/route';
 import { notFoundHandler, globalErrorHandler } from './middlewares/error-handlers.mw';
 
@@ -9,6 +10,7 @@ const app = express();
 app.use(express.static('public'));
 const port = process.env.PORT || 2000;
 
+app.use(helmet());
 app.use(morgan('dev'));
 app.use(
 	cors({
